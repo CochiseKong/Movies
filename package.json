@@ -1,0 +1,27 @@
+{
+  "name": "movies",
+  "version": "1.0.0",
+  "description": "This A Movies Web Server",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node ./server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeeganDau/Movies.git"
+  },
+  "keywords": [
+    "movie",
+    "trailer"
+  ],
+  "author": "Keegan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KeeganDau/Movies/issues"
+  },
+  "homepage": "https://github.com/KeeganDau/Movies#readme",
+  "dependencies": {
+    "koa": "^2.7.0"
+  }
+}
