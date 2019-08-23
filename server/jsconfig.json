@@ -1,0 +1,6 @@
+// 解决修饰器报错
+{
+  "compilerOptions": {
+    "experimentalDecorators": true
+  }
+}

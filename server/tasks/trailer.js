@@ -1,10 +1,8 @@
 const cp = require('child_process')
 const { resolve } = require('path')
-const mongoose = require('mongoose')
-const Movie = mongoose.model('Movie')
 
   ; (async () => {
-    const script = resolve(__dirname, '../crawler/trailer-list.js')
+    const script = resolve(__dirname, '../crawler/video.js')
     const child = cp.fork(script, [])
     let invoked = false
 
@@ -23,16 +21,7 @@ const Movie = mongoose.model('Movie')
 
     child.on('message', data => {
       let result = data.result
-      result.forEach(async item => {
-        let movie = await Movie.findOne({  //对比数据库中的ID
-            doubanId : item.doubanId
-        })
-        if (!movie) {  //不存在就新建一条
-          movie = new Movie(item)
-          await movie.save()
-        }
-      })
-      // console.log(result);
+      console.log(data);
     })
 
   })()
