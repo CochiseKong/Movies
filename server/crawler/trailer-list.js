@@ -37,14 +37,14 @@ const sleep = time => new Promise(resolve => {
       if (items.length >= 1) {
         items.each((index, item) => {
           let it = $(item)
-          let duobanId = Number(it.attr('id'))
+          let doubanId = Number(it.attr('id'))
           let title = it.data('title')
           let star = it.data('score')
           let poster = it.find('.poster img').attr('src').replace('s_ratio', 'l_ratio')
 
           // 数据拼接
           links.push({
-            duobanId,
+            doubanId,
             title,
             star,
             poster

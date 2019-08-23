@@ -24,8 +24,8 @@ const useMiddlewares = (app) => {
   // 启动数据库
   ; (async () => {
     await database()
-    // require('./tasks/movie')
-    // require('./tasks/api')
+    // require('./tasks/trailer')
+    require('./tasks/api')
     const app = new Koa
     await useMiddlewares(app)
     app.listen(4545)

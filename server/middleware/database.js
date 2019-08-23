@@ -14,14 +14,10 @@ export const database = app => {
     mongoose.set('debug', true)
   }
 
-  mongoose.connect(db, {
-    useMongoClient: true
-  })
+  mongoose.connect(db,{ useNewUrlParser: true })
 
   mongoose.connection.on('disconnected', () => {
-    mongoose.connect(db, {
-      useMongoClient: true
-    })
+    mongoose.connect(db,{ useNewUrlParser: true })
   })
 
   mongoose.connection.on('error', err => {

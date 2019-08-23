@@ -1,17 +1,17 @@
 const rp = require('request-promise-native')  //http请求库
 const mongoose = require('mongoose')
 const Movie = mongoose.model('Movie')
-const Category = mongoose.model('Category')
 
 // 请求封装
 async function fetchMovie(item) {
-  const url = `https://api.douban.com/v2/movie/subject/${item.duobanId}?apikey=0df993c66c0c636e29ecbb5344252a4a`
+
+  const url = `https://api.douban.com/v2/movie/subject/${item.doubanId}?apikey=0df993c66c0c636e29ecbb5344252a4a`
   const res = await rp(url)
   let body
   try {
     body = JSON.parse(res)
   } catch (error) {
-    console.log(error);
+    console.log('httpError: ' + error);
   }
   console.log(body);
 
