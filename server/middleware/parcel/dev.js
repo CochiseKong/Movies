@@ -1,9 +1,10 @@
-import { resolve } from 'path'
-import Bundler from 'parcel-bundler'
+// 动态加载资源
+import Bundler from 'parcel-bundler'   //打包插件
 import views from 'koa-views'
 import serve from 'koa-static'
+import { resolve } from 'path'
 
-const r = path => resolve(__dirname, path)
+const r = path => resolve(__dirname, path)  
 
 const bundler = new Bundler(r('../../../src/index.html'), {
   publicUrl: '/',

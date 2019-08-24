@@ -1,3 +1,4 @@
+// 静态加载资源
 import views from 'koa-views'
 import serve from 'koa-static'
 import { resolve } from 'path'
