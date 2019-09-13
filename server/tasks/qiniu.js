@@ -1,7 +1,7 @@
 const qiniu = require('qiniu')
 const mongoose = require('mongoose')
 const nanoid = require('nanoid')
-const config = require('../config')
+const config = require('../../config').default
 
 const bucket = config.qiniu.bucket
 const mac = new qiniu.auth.digest.Mac(config.qiniu.AK, config.qiniu.SK)
@@ -27,8 +27,8 @@ const uploadToQiniu = async (url, key) => {
   })
 }
 
-;(async () => {
-  let movies = await Movie.find({
+  ; (async () => {
+    let movies = await Movie.find({
     $or: [
       {videoKey: {$exists: false}},
       {videoKey: null},
@@ -36,33 +36,32 @@ const uploadToQiniu = async (url, key) => {
     ]
   }).exec()
 
+for (let i = 0; i < movies.length; i++) {
+  let movie = movies[i]
 
-  for (let i = 0; i < movies.length; i++) {
-    let movie = movies[i]
+  if (movie.video && !movie.videoKey) {
+    try {
+      let videoData = await uploadToQiniu(movie.video, nanoid() + '.mp4')
+      let coverData = await uploadToQiniu(movie.cover, nanoid() + '.png')
+      let posterData = await uploadToQiniu(movie.poster, nanoid() + '.png')
 
-    if (movie.video && !movie.videoKey) {
-      try {
-        let videoData = await uploadToQiniu(movie.video, nanoid() + '.mp4')
-        let coverData = await uploadToQiniu(movie.cover, nanoid() + '.png')
-        let posterData = await uploadToQiniu(movie.poster, nanoid() + '.png')
+      console.log(videoData)
+      console.log(movie)
 
-        console.log(videoData)
-        console.log(movie)
-
-        if (videoData.key) {
-          movie.videoKey = videoData.key
-        }
-        if (coverData.key) {
-          movie.coverKey = coverData.key
-        }
-        if (posterData.key) {
-          movie.posterKey = posterData.key
-        }
-
-        await movie.save()
-      } catch (err) {
-        console.log(err)
+      if (videoData.key) {
+        movie.videoKey = videoData.key
       }
+      if (coverData.key) {
+        movie.coverKey = coverData.key
+      }
+      if (posterData.key) {
+        movie.posterKey = posterData.key
+      }
+
+      await movie.save()
+    } catch (err) {
+      console.log(err)
     }
   }
-})()
+}
+}) ()

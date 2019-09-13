@@ -12,7 +12,7 @@ import 'moment/locale/zh-cn'
 
 moment.locale('zh-cn')
 
-const site = 'http://video.iblack7.com/'
+const site = 'http://static.keegandau.cn/'
 
 export default class Home extends Component {
   constructor (props) {
@@ -93,7 +93,7 @@ export default class Home extends Component {
       {
         title: '操作',
         key: 'action',
-        render: (text, record) => <Button type="danger" onClick={this._delete}>删除</Button>
+        render: (text, record) => <Button type="danger" onClick={()=> this._deleteMovies(record._id)}>删除</Button>
       }]
     }
   }
@@ -123,6 +123,21 @@ export default class Home extends Component {
     })
   }
 
+  _deleteMovies = (id) => {
+    request({
+      method: 'delete',
+      url: `/admin/delete?id=${id}`
+    }).then(res => {
+      this.setState({
+        dataSource: res
+      })
+    }).catch(() => {
+      this.setState({
+        dataSource: []
+      })
+    })
+  }
+  
   render () {
     let { dataSource, columns } = this.state
 

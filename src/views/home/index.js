@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { request } from '../../lib'
 import Layout from '../../layouts/default'
+import { Link } from 'react-router-dom'
 import {
   Menu
 } from 'antd'
@@ -13,7 +14,7 @@ export default class Home extends Component {
     this.state = {
       collapsed: false,
       selectedKey: '0',
-      years: ['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018'],
+      years: ['2020', '2019', '2018', '2017'],
       type: this.props.match.params.type,
       year: this.props.match.params.year,
       movies: []
@@ -83,7 +84,7 @@ export default class Home extends Component {
               years && years.length
                 ? years.map((e, i) => (
                   <Menu.Item key={i}>
-                    <a href={`/year/${e}`}>{e} 年上映</a>
+                    <Link to={`/year/${e}`}>{e} 年上映</Link>
                   </Menu.Item>
                 ))
                 : null

@@ -158,7 +158,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var Meta = _antd.Card.Meta;
-var site = 'http://video.iblack7.com/';
+var site = 'http://static.keegandau.cn/';
 var gridStyle = {
   width: '25%',
   textAlign: 'center'
@@ -335,6 +335,8 @@ var _lib = require("../../lib");
 
 var _default = _interopRequireDefault(require("../../layouts/default"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _antd = require("antd");
 
 var _content = _interopRequireDefault(require("./content"));
@@ -418,7 +420,7 @@ function (_Component) {
     _this.state = {
       collapsed: false,
       selectedKey: '0',
-      years: ['2025', '2024', '2023', '2022', '2021', '2020', '2019', '2018'],
+      years: ['2020', '2019', '2018', '2017'],
       type: _this.props.match.params.type,
       year: _this.props.match.params.year,
       movies: []
@@ -454,8 +456,8 @@ function (_Component) {
       }, years && years.length ? years.map(function (e, i) {
         return _react.default.createElement(_antd.Menu.Item, {
           key: i
-        }, _react.default.createElement("a", {
-          href: "/year/".concat(e)
+        }, _react.default.createElement(_reactRouterDom.Link, {
+          to: "/year/".concat(e)
         }, e, " \u5E74\u4E0A\u6620"));
       }) : null), _react.default.createElement("div", {
         className: "flex-1 scroll-y align-self-start"
@@ -467,7 +469,7 @@ function (_Component) {
 }(_react.Component);
 
 exports.default = Home;
-},{"react":"../node_modules/react/index.js","../../lib":"lib/index.js","../../layouts/default":"layouts/default.js","antd":"../node_modules/antd/es/index.js","./content":"views/home/content.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","../../lib":"lib/index.js","../../layouts/default":"layouts/default.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","antd":"../node_modules/antd/es/index.js","./content":"views/home/content.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -495,7 +497,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

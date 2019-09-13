@@ -18,7 +18,7 @@ const changeToArr = R.unless(
 )
 
 export class Route {
-  constructor(app, routesPath) {
+  constructor (app, routesPath) {
     this.app = app
     this.router = new KoaRouter()
     this.routesPath = routesPath
@@ -63,7 +63,7 @@ export const setRouter = method => path => (target, key, descriptor) => {
 
 export const Controller = path => target => (target.prototype[pathPrefix] = path)
 
-export const Get = setRouter('get')
+export const Get = setRouter('get') 
 
 export const Post = setRouter('post')
 
@@ -83,7 +83,9 @@ export const Log = convert(async (ctx, next) => {
  *   body: ['name', 'password']
  * })
  */
-export const Required = paramsObj => convert(async (ctx, next) => {
+export const Required = paramsObj => convert(async (ctx, next) => { 
+
+
   let errs = []
 
   R.forEachObjIndexed(

@@ -162,7 +162,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 var Meta = _antd.Card.Meta;
-var site = 'http://video.iblack7.com/';
+var site = 'http://static.keegandau.cn/';
 var gridStyle = {
   width: '25%',
   textAlign: 'center'
@@ -273,7 +273,7 @@ function (_Component) {
         tab: "\u5173\u4E8E\u672C\u7247",
         key: "1"
       }, _react.default.createElement("h1", null, movie.title), _react.default.createElement("dl", null, _react.default.createElement("dt", null, "\u8C46\u74E3\u8BC4\u5206\uFF1A", _react.default.createElement(_antd.Badge, {
-        count: movie.rate,
+        count: (Math.random() * (6 - 9) + 9).toFixed(1),
         style: {
           backgroundColor: '#52c41a'
         }
@@ -337,7 +337,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

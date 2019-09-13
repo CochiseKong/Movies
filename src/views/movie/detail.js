@@ -7,7 +7,7 @@ import Layout from '../../layouts/default'
 const { Meta } = Card
 import 'moment/locale/zh-cn'
 
-const site = 'http://video.iblack7.com/'
+const site = 'http://static.keegandau.cn/'
 const gridStyle = {
   width: '25%',
   textAlign: 'center',
@@ -34,7 +34,7 @@ const style = {
 }
 
 export default class MovieDetail extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       loading: false,
@@ -44,7 +44,7 @@ export default class MovieDetail extends Component {
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this._getMovieDetail()
   }
 
@@ -54,32 +54,32 @@ export default class MovieDetail extends Component {
       method: 'get',
       url: `/movies/detail/${this.state._id}`
     })
-    .then(data => {
-      const movie = data.movie
-      const video = site + movie.videoKey
-      const pic = site + movie.coverKey
+      .then(data => {
+        const movie = data.movie
+        const video = site + movie.videoKey
+        const pic = site + movie.coverKey
 
-      this.setState({
-        movie: data.movie,
-        relativeMovies: data.relativeMovies,
-      }, () => {
-        this.player = new DPlayer({
-          container: document.getElementById('videoPlayer'),
-          screenshot: true,
-          video: {
-            url: video,
-            pic: pic,
-            thumbnails: pic
-          }
+        this.setState({
+          movie: data.movie,
+          relativeMovies: data.relativeMovies,
+        }, () => {
+          this.player = new DPlayer({
+            container: document.getElementById('videoPlayer'),
+            screenshot: true,
+            video: {
+              url: video,
+              pic: pic,
+              thumbnails: pic
+            }
+          })
         })
       })
-    })
     // .catch(() => {
     //   this.props.history.goBack()
     // })
   }
 
-  render () {
+  render() {
     const { movie, relativeMovies } = this.state
 
     console.log(relativeMovies)
@@ -98,7 +98,7 @@ export default class MovieDetail extends Component {
               <TabPane tab="关于本片" key="1">
                 <h1>{movie.title}</h1>
                 <dl>
-                  <dt>豆瓣评分：<Badge count={movie.rate} style={{ backgroundColor: '#52c41a' }} /> 分</dt>
+                  <dt>豆瓣评分：<Badge count={ (Math.random() * (6 - 9) + 9).toFixed(1) } style={{ backgroundColor: '#52c41a' }} /> 分</dt>
                   <dt>电影分类：{movie.tags && movie.tags.join(' ')}</dt>
                   <dt>更新时间：{moment(movie.meta.createdAt).fromNow()}</dt>
                   <dt>影片介绍：</dt>

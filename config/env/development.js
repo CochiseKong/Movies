@@ -1,7 +1,7 @@
 export default {
   db: 'mongodb://localhost/movies',
   port: 3000,
-  base: 'http://xxx.iblack7.com',
+  base: 'http://static.keegandau.cn',
   qiniu: {
     "bucket": "movies",
     "video": "http://puw05irxz.bkt.clouddn.com/",

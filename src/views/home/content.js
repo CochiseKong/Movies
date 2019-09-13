@@ -15,7 +15,7 @@ import moment from 'moment'
 const { Meta } = Card
 import 'moment/locale/zh-cn'
 
-const site = 'http://video.iblack7.com/'
+const site = 'http://static.keegandau.cn/' 
 const gridStyle = {
   width: '25%',
   textAlign: 'center',

@@ -1,13 +1,9 @@
 const Koa = require("koa")
-// const statics = require('koa-static')
-// const router = require('./routes/movie')
-// const path = require('path')
 const { database, initSchemas } = require('./database/init')
 import { join } from 'path'
 import R from 'ramda'
-const MIDDLEWARES = ['router','parcel']
+const MIDDLEWARES = ['general','router', 'parcel']
 
-// const staticPath = '../web/build'
 
 const useMiddlewares = (app) => {
   R.map(
@@ -25,7 +21,7 @@ const useMiddlewares = (app) => {
   ; (async () => {
     await database()
     // require('./tasks/trailer')
-    // require('./tasks/api')
+    // require('./tasks/qiniu')
     const app = new Koa
     await useMiddlewares(app)
     app.listen(4545)

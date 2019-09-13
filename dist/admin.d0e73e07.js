@@ -161,7 +161,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 _moment.default.locale('zh-cn');
 
-var site = 'http://video.iblack7.com/';
+var site = 'http://static.keegandau.cn/';
 
 var Home =
 /*#__PURE__*/
@@ -185,6 +185,21 @@ function (_Component) {
       (0, _lib.request)({
         method: 'get',
         url: '/movies/all'
+      }).then(function (res) {
+        _this.setState({
+          dataSource: res
+        });
+      }).catch(function () {
+        _this.setState({
+          dataSource: []
+        });
+      });
+    };
+
+    _this._deleteMovies = function (id) {
+      (0, _lib.request)({
+        method: 'delete',
+        url: "/admin/delete?id=".concat(id)
       }).then(function (res) {
         _this.setState({
           dataSource: res
@@ -292,7 +307,9 @@ function (_Component) {
         render: function render(text, record) {
           return _react.default.createElement(_antd.Button, {
             type: "danger",
-            onClick: _this._delete
+            onClick: function onClick() {
+              return _this._deleteMovies(record._id);
+            }
           }, "\u5220\u9664");
         }
       }]
@@ -359,7 +376,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57443" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

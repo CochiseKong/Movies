@@ -9,12 +9,11 @@ export const getAllMovies = async (type, year) => {
     query.movieTypes = {$in: [type]}
   }
   if (year) {
-    query.year = year
+    query.tags = {$in: [year]}
   }
 
   const movies = await Movie.find(query)
-  console.log(movies);
-  
+
   return movies
 }
 

@@ -20,7 +20,7 @@ export default class Login extends Component {
     })
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = (e) => { 
     e.preventDefault()
     this.props.form.validateFields(async (err, values) => {
       if (!err) {

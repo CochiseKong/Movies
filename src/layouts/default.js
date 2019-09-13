@@ -9,14 +9,13 @@ import {
 } from 'antd'
 
 const getMenuContent = ({ path, name }) => (
-  <a href={path ? path : '/'} style={{color: '#fff2e8'}}>
+  <Link to={path ? path : '/'} style={{color: '#fff2e8'}}>
     {name}
-  </a>
+  </Link>
 )
 
 export default class LayoutDefault extends Component {
   constructor (props) {
-    console.log(props)
     super(props)
     this.state = {
       loading: false,
@@ -67,7 +66,7 @@ export default class LayoutDefault extends Component {
               float: 'left'
             }}
           >
-            <a href={'/'} className='hover-scale logo-text' style={{color: '#fff2e8'}}>黑骑预告片网站</a>
+            <Link to={'/'} className='hover-scale logo-text' style={{color: '#fff2e8'}}>黑骑预告片网站</Link>
           </Menu.Item>
           {
             navRoutes.map((e, i) => (
